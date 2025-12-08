@@ -1,46 +1,51 @@
-🚗 Car Washing Simulation Using Stack (Python)
+# Car Washing Simulation System – Python (Queue)
 
-This project is a simple console-based simulation that demonstrates how a Stack (LIFO) data structure works in a real-life scenario of a car wash line. Cars are added to the line using push, and washed and removed using pop operations.
+## Overview
+The Car Washing Simulation System is a Python project that models a real-world car wash service using the Queue (FIFO) data structure. Cars are added to a waiting line and washed in the same order they arrive. This project demonstrates queue operations in a practical and interactive way with menu-driven options and file storage to maintain car data.
 
-📌 Features
+## Features
+• Add cars to the queue  
+• Wash cars in FIFO order  
+• View cars currently waiting  
+• Persistent storage using cars.txt  
+• Realistic progress animation during washing  
+• Clear and interactive display menu
 
-Add a car to the waiting line
+## Concept Used
+Queue (FIFO – First In First Out)
+Enqueue – Add car to queue
+Dequeue – Remove car after wash
 
-Wash/remove the last car added
+## Technology Stack
+• Python  
+• Collections (deque)  
+• File Handling  
+• Time & OS modules
 
-Display current cars in the line
+## How to Run
+python car_wash.py
 
-Capacity handling (Full / Empty messages)
+## Folder Structure
+CarWashingSimulation/
+│── car_wash.py
+│── cars.txt
+└── README.md
 
-Easy menu-based interaction
+## Sample Output
+====== CAR WASHING SYSTEM ======
+1. Add Car
+2. Wash Next Car
+3. View Queue
+4. Exit
+Enter choice: 1
+Enter Car Number: TN10AB1234
+✔ Car added to queue
 
-🧠 Concepts Used
+## Future Enhancements
+• Billing system + receipt  
+• Multiple wash types (Normal, Deluxe, Foam)  
+• GUI using Tkinter  
+• Average waiting time calculation
 
-Stack Data Structure
-
-LIFO (Last-In First-Out)
-
-Python list implementation
-
-▶️ How to Run
-python car_wash_simulation.py
-
-📂 Project Structure
-car_wash_simulation.py  # Main source file
-README.md               # Documentation
-
-🎯 Purpose
-
-Helps beginners understand stack operations in a practical, real-world like simulation.
-
-🔮 Future Enhancements
-
-Add wash timer simulation
-
-VIP priority lanes
-
-GUI interface (Tkinter)
-
-📄 License
-
-Open-source – free to use for learning and academic purposes.
+## Conclusion
+This project helps students understand queue operations in a real-world scenario while practicing Python concepts like functions, loops, and file handling. It demonstrates the importance of FIFO order through an interactive simulation.
