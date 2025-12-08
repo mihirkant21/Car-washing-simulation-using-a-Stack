@@ -1,68 +1,64 @@
-class CarWashStack:
-    def __init__(self, capacity):
-        self.stack = []          # will store car numbers / IDs
-        self.capacity = capacity
+from collections import deque
+import time
+import os
 
-    def is_full(self):
-        return len(self.stack) == self.capacity
+# Queue for storing cars
+car_queue = deque()
 
-    def is_empty(self):
-        return len(self.stack) == 0
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
-    def arrive(self, car_number):
-        if self.is_full():
-            print(f"Car {car_number} cannot enter. Car wash line is FULL!")
-        else:
-            self.stack.append(car_number)
-            print(f"Car {car_number} has entered the car wash line.")
+def add_car():
+    car_number = input("Enter Car Number/Name: ")
+    car_queue.append(car_number)
+    print(f"✔ {car_number} added to the queue.\n")
 
-    def wash_car(self):
-        if self.is_empty():
-            print("No cars to wash. Line is EMPTY!")
-        else:
-            car = self.stack.pop()
-            print(f"Car {car} is being washed and leaving the car wash.")
+def wash_car():
+    if not car_queue:
+        print(" No cars in the queue! Add cars first.\n")
+    else:
+        current_car = car_queue.popleft()
+        print(f" Washing car: {current_car}")
+        for i in range(1, 6):
+            print(f" Washing... {i*20}% completed")
+            time.sleep(0.5)
+        print(f" {current_car} wash completed!\n")
 
-    def show_line(self):
-        if self.is_empty():
-            print("Car wash line is empty.")
-        else:
-            print("Current car wash line (bottom --> top):")
-            print(" | ".join(str(c) for c in self.stack))
+def display_queue():
+    if not car_queue:
+        print(" Queue is currently empty.\n")
+    else:
+        print(" Cars in Queue:")
+        for car in car_queue:
+            print(f"  {car}")
+        print()
 
-
-def main():
-    print("=== CAR WASH SIMULATION (STACK) ===")
-    capacity = int(input("Enter maximum number of cars in car wash line: "))
-
-    car_wash = CarWashStack(capacity)
-
+def menu():
     while True:
-        print("\nMenu:")
-        print("1. Car arrives")
-        print("2. Wash next car (pop)")
-        print("3. Show current line")
+        print("====== CAR WASHING SYSTEM (QUEUE) ======")
+        print("1. Add Car to Queue")
+        print("2. Wash Next Car")
+        print("3. View Queue")
         print("4. Exit")
-        
+        print("========================================")
+
         choice = input("Enter your choice: ")
 
         if choice == "1":
-            car_number = input("Enter car number/ID: ")
-            car_wash.arrive(car_number)
-
+            add_car()
         elif choice == "2":
-            car_wash.wash_car()
-
+            wash_car()
         elif choice == "3":
-            car_wash.show_line()
-
+            display_queue()
         elif choice == "4":
-            print("Exiting simulation. Goodbye!")
+            print("Thank you! Exiting car washing system. ")
             break
-
         else:
-            print("Invalid choice. Please try again.")
+            print("Invalid choice! Please try again.\n")
 
+        input("Press Enter to continue...")
+        clear_screen()
 
-if __name__ == "__main__":
-    main()
+# Run main program
+clear_screen()
+menu()
